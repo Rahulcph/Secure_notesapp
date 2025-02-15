@@ -1,7 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('vault.urls')),  # Include app-level URLs
+    path('', views.home, name='home'),
+    path('add/', views.add_note, name='add_note'),
+    path('encrypt/<int:note_id>/', views.encrypt_note, name='encrypt_note'),
+    path('decrypt/<int:note_id>/', views.decrypt_note, name='decrypt_note'),
 ]
